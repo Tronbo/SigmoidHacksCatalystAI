@@ -27,7 +27,9 @@ app = Flask(__name__)
 
 nlp = spacy.load('en_core_web_sm')
 
-candidate_sentences = pd.read_csv("examples/data.csv")
+set_openai_key("sk-MXAmsogskTEQLCKH80Mx3rbqsQyTsJxFnHlOfy1h")
+
+candidate_sentences = pd.read_csv("data.csv")
 print(candidate_sentences.shape)
 
 # Construct GPT object and show some examples
@@ -39,8 +41,6 @@ gpt.add_example(Example('Harmonization/domain-invariance schemes results are und
                             'We show that for a wide class of harmonization/domain-invariance schemes several undesirable properties are unavoidable. If a predictive machine is made invariant to a set of domains, the accuracy of the output predictions (as measured by mutual information) is limited by the domain with the least amount of information to begin with. If a real label value is highly informative about the source domain, it cannot be accurately predicted by an invariant predictor. These results are simple and intuitive, but we believe that it is beneficial to state them for medical imaging harmonization.'))
 gpt.add_example(Example('Prediction in a new domain without any training sample called zero-shot domain adaptation (ZSDA), is an important task in domain adaptation.',
                             'Prediction in a new domain without any training sample, called zero-shot domain adaptation (ZSDA), is an important task in domain adaptation. While prediction in a new domain has gained much attention in recent years, in this paper, we investigate another potential of ZSDA. Specifically, instead of predicting responses in a new domain, we find a description of a new domain given a prediction. The task is regarded as predictive optimization, but existing predictive optimization methods have not been extended to handling multiple domains. We propose a simple framework for predictive optimization with ZSDA and analyze the condition in which the optimization problem becomes convex optimization. We also discuss how to handle the interaction of characteristics of a domain in predictive optimization. Through numerical experiments, we demonstrate the potential usefulness of our proposed framework.'))
-gpt.add_example(Example('Designing inductive bias in neural architectures is widely studied. Transformer networks can learn inductive bias from generic task.', 
-                            'While designing inductive bias in neural architectures has been widely studied, we hypothesize that transformer networks are flexible enough to learn inductive bias from suitable generic tasks. Here, we replace architecture engineering by encoding inductive bias in the form of datasets. Inspired by Peirce’s view that deduction, induction, and abduction form an irreducible set of reasoning primitives, we design three synthetic tasks that are intended to require the model to have these three abilities. We specifically design these synthetic tasks in a way that they are devoid of mathematical knowledge to ensure that only the fundamental reasoning biases can be learned from these tasks. This defines a new pre-training methodology called “LIME” (Learning Inductive bias for Mathematical rEasoning). Models trained with LIME significantly outperform vanilla transformers on three very different large mathematical reasoning benchmarks. Unlike dominating the computation cost as traditional pre-training approaches, LIME requires only a small fraction of the computation cost of the typical downstream task.'))
 gpt.add_example(Example('Agents that learn to select optimal actions represent an important focus of the sequential decision making literature.',
                             'Agents that learn to select optimal actions represent a prominent focus of the sequential decisionmaking literature. In the face of a complex environment or constraints on time and resources, however, aiming to synthesize such an optimal policy can become infeasible. These scenarios give rise to an important trade-off between the information an agent must acquire to learn and the sub-optimality of the resulting policy. While an agent designer has a preference for how this trade-off is resolved, existing approaches further require that the designer translate these preferences into a fixed learning target for the agent. In this work, leveraging rate-distortion theory, we automate this process such that the designer need only express their preferences via a single hyperparameter and the agent is endowed with the ability to compute its own learning targets that best achieve the desired trade-off. We establish a general bound on expected discounted regret for an agent that decides what to learn in this manner along with computational experiments that illustrate the expressiveness of designer preferences and even show improvements over Thompson sampling in identifying an optimal policy.'))
 gpt.add_example(Example('We study learning Censor Markov Random Fields CMRF in short. These are Markov Random Fields where some of the nodes are censored.',
@@ -106,7 +106,7 @@ def get_entities(sent):
 entity_pairs = []
 relations = []
 
-
+'''
 for i in tqdm(candidate_sentences):
     individual_sentences = i.split(". ")
     for j in individual_sentences:
@@ -140,7 +140,7 @@ plt.figure(figsize=(12,12))
 
 pos = nx.spring_layout(G)
 nx.draw(G, with_labels=True, node_color="gray", edge_color="skyblue", edge_cmap=plt.cm.Blues, pos = pos)
-
+'''
 
 def compute(string):
     new_arr = string.split(" ")

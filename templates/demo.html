@@ -12,7 +12,7 @@
     <header>
         <div class="wrapper">
             <div class="logo">
-                <a href="./home.html"><img class="logo" src="https://media.discordapp.net/attachments/797624154748223538/800812480229539900/catalystAI_3.png" alt=""></a>
+                <a href="{{ url_for('home') }}"><img class="logo" src="https://media.discordapp.net/attachments/797624154748223538/800812480229539900/catalystAI_3.png" alt=""></a>
             </div>
             <nav>
                 <a href="#about">About</a>
@@ -33,7 +33,7 @@
                 <textarea name="text" cols="40" rows="15" class="text"></textarea>
                 <input class="btn draw-border" type="submit"/>
             </form>
-            <h3 class="output" style="position:absolute">{{output}}</h3>
+            <h3 class="output" style="position:absolute">{{ output }}</h3>
         </div>
     </div>
 </div>
