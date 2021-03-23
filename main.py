@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 nlp = spacy.load('en_core_web_sm')
 
-set_openai_key("sk-MXAmsogskTEQLCKH80Mx3rbqsQyTsJxFnHlOfy1h")
+set_openai_key("sk-somerandomcharacters (This is where your openai key goes)")
 
 candidate_sentences = pd.read_csv("data.csv")
 print(candidate_sentences.shape)
